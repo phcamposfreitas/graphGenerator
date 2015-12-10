@@ -4,6 +4,7 @@ import org.apache.camel.spring.SpringRouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.generator.model.UnidadeSessao;
 import com.generator.processor.TransformLogToUnidadeSessao;
 
 @Component
@@ -17,7 +18,7 @@ public class LogCollectorRouter extends SpringRouteBuilder {
 	
 	String endpoitLog = "file:" + diretorioLinux + diretorioArquivos + diretorioLogs;
 	
-	@Value("$(fila.processamento.unidade.sessao)")
+	@Value("${fila.processamento.unidade.sessao}")
 	String endpoitMetadados;
 	
 	@Override
@@ -26,6 +27,7 @@ public class LogCollectorRouter extends SpringRouteBuilder {
 		
 		from(endpoitLog + configuracaoLeitorLog).
 		bean(TransformLogToUnidadeSessao.class).
+		split( body() ).
 		to(endpoitMetadados)
 		;
 		
