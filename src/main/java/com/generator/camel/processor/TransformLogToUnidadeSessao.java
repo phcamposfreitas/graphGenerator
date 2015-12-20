@@ -1,4 +1,4 @@
-package com.generator.processor;
+package com.generator.camel.processor;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,9 +11,9 @@ import java.util.List;
 import org.apache.camel.Handler;
 import org.apache.commons.lang3.StringUtils;
 
+import com.generator.camel.model.UnidadeSessao;
 import com.generator.common.ParserConstantes;
 import com.generator.common.UnidadeSessaoUtils;
-import com.generator.model.UnidadeSessao;
 
 public class TransformLogToUnidadeSessao {
 

@@ -1,4 +1,4 @@
-package com.generator.router;
+package com.generator.camel.router;
 
 import java.util.LinkedHashMap;
 
@@ -9,10 +9,9 @@ import org.apache.camel.spring.SpringRouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.generator.model.Sessao;
-import com.generator.model.UnidadeSessao;
-import com.generator.model.UnidadeSessaoFim;
-import com.generator.model.UnidadeSessaoInicio;
+import com.generator.camel.model.Sessao;
+import com.generator.camel.model.UnidadeSessaoFim;
+import com.generator.camel.model.UnidadeSessaoInicio;
 
 @Component
 public class RouteToProcessamentoRouter extends SpringRouteBuilder {
@@ -20,6 +19,9 @@ public class RouteToProcessamentoRouter extends SpringRouteBuilder {
 	@Value("${fila.processamento.unidade.sessao}")
 	String endpoitMetadados;
 	
+	String enpointMongo = "mongodb:myDb?database=graphGenerator&collection=sessao&operation=save";
+	
+
 	private LinkedHashMap<String, UnidadeSessaoInicio> grupoStart = new LinkedHashMap<String, UnidadeSessaoInicio>();
 	private LinkedHashMap<String, UnidadeSessaoFim> grupoStop = new LinkedHashMap<String, UnidadeSessaoFim>();
 	
@@ -31,7 +33,6 @@ public class RouteToProcessamentoRouter extends SpringRouteBuilder {
 		from(endpoitMetadados)
 		.choice()
         	.when(body().isInstanceOf(UnidadeSessaoInicio.class))
-            	.to("log:InicioSessao")
             	.process(new Processor() {
 					
 					@Override
@@ -42,7 +43,6 @@ public class RouteToProcessamentoRouter extends SpringRouteBuilder {
 					}
 				})
         	.when(body().isInstanceOf(UnidadeSessaoFim.class))
-            	.to("log:InicioFimSessao")
             	.process(new Processor() {
 
 					@Override
@@ -62,7 +62,7 @@ public class RouteToProcessamentoRouter extends SpringRouteBuilder {
 						}
 					}
 				})
-            	.to("log:FimFimSessao")
+            	.to(enpointMongo)
         	.otherwise()
             	.to("log:Nada");
 	}

@@ -12,5 +12,9 @@ public class IndiceLogRadius {
 	public static final Integer NOME_USUARIO_STOP = 7;
 	
 	public static final Integer DURACAO = 18;
+	public static final Integer BYTES_IN = 12;
+	public static final Integer BYTES_OUT = 13;
+	public static final Integer PKT_IN = 16;
+	public static final Integer PKT_OUT = 17;
 
 }

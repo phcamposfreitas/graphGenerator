@@ -1,11 +1,11 @@
-package com.generator.router;
+package com.generator.camel.router;
 
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.generator.model.UnidadeSessao;
-import com.generator.processor.TransformLogToUnidadeSessao;
+import com.generator.camel.model.UnidadeSessao;
+import com.generator.camel.processor.TransformLogToUnidadeSessao;
 
 @Component
 public class LogCollectorRouter extends SpringRouteBuilder {
@@ -26,6 +26,7 @@ public class LogCollectorRouter extends SpringRouteBuilder {
 		String configuracaoLeitorLog = "?move=.done";//&delay=60000";
 		
 		from(endpoitLog + configuracaoLeitorLog).
+		log("Processing file ${file:name}").
 		bean(TransformLogToUnidadeSessao.class).
 		split( body() ).
 		to(endpoitMetadados)

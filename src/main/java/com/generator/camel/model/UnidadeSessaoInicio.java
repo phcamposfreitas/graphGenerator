@@ -1,4 +1,4 @@
-package com.generator.model;
+package com.generator.camel.model;
 
 import java.text.ParseException;
 

@@ -1,4 +1,4 @@
-package com.generator.model;
+package com.generator.camel.model;
 
 import java.text.ParseException;
 
@@ -20,5 +20,15 @@ public class UnidadeSessaoFim extends UnidadeSessao {
 	public UnidadeSessaoFim(String dataRegistro, String codigoSessao, String usuario, String duracao) throws ParseException {
 		super(dataRegistro, codigoSessao, usuario);
 		this.duracao = Long.parseLong(duracao);
+	}
+
+	public UnidadeSessaoFim(String dataRegistro, String codigoSessao, String usuario, String duracao, String bytesEnviados,
+			String bytesRecebidos, String pacotesEnviados, String pacotesRecebidos) throws ParseException {
+		super(dataRegistro, codigoSessao, usuario);
+		this.duracao = Long.parseLong(duracao);
+		this.bytesEnviados = Long.parseLong(bytesEnviados);
+		this.bytesRecebidos = Long.parseLong(bytesRecebidos);
+		this.pacotesEnviados = Long.parseLong(pacotesEnviados);
+		this.pacotesRecebidos = Long.parseLong(pacotesRecebidos);
 	}
 }

@@ -4,9 +4,9 @@ import java.text.ParseException;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.generator.model.UnidadeSessao;
-import com.generator.model.UnidadeSessaoFim;
-import com.generator.model.UnidadeSessaoInicio;
+import com.generator.camel.model.UnidadeSessao;
+import com.generator.camel.model.UnidadeSessaoFim;
+import com.generator.camel.model.UnidadeSessaoInicio;
 
 public final class UnidadeSessaoUtils {
 
@@ -26,8 +26,13 @@ public final class UnidadeSessaoUtils {
 			String codigoSessao = obterValor(linhas, IndiceLogRadius.COD_SESSAO_STOP);
 			String usuario = obterValor(linhas, IndiceLogRadius.NOME_USUARIO_STOP);
 			String duracao = obterValor(linhas, IndiceLogRadius.DURACAO);
+			String bytesIn = obterValor(linhas, IndiceLogRadius.BYTES_IN);
+			String bytesOut = obterValor(linhas, IndiceLogRadius.BYTES_OUT);
+			String pktIn = obterValor(linhas, IndiceLogRadius.PKT_IN);
+			String pktOut = obterValor(linhas, IndiceLogRadius.PKT_OUT);
 			
-			unidade = new UnidadeSessaoFim(dataRegistro, parseLogValue(codigoSessao), parseLogValue(usuario), parseLogValue(duracao));
+			unidade = new UnidadeSessaoFim(dataRegistro, parseLogValue(codigoSessao), parseLogValue(usuario), parseLogValue(duracao)
+					, parseLogValue(bytesOut),  parseLogValue(bytesIn),  parseLogValue(pktOut) , parseLogValue(pktIn));
 		}
 		
 		
