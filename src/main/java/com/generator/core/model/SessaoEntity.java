@@ -2,7 +2,7 @@ package com.generator.core.model;
 
 import java.io.Serializable;
 import java.text.ParseException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -33,17 +33,22 @@ public class SessaoEntity implements Serializable {
 	@JsonFormat(pattern=dateFormat)
 	private String dataFim;
 	
-	private Long duracao;
+	private Double duracao;
 	
-	public LocalDate getDataInicioAsLocalDate() {
+	private Double bytesEnviados;
+	private Double bytesRecebidos;
+	private Double pacotesEnviados;
+	private Double pacotesRecebidos;
+	
+	public LocalDateTime getDataInicioAsLocalDate() {
 		// TODO: Mapear entidade com date/Calendar/LocalDate, etc
-		LocalDate ld = null;
+		LocalDateTime ld = null;
 		
 		if(getDataInicio() == null)	return null;
 		
 		try{
 			Date parsedDate = DateUtils.parseDate(getDataInicio(), dateFormat);
-			ld = parsedDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			ld = parsedDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 		}catch(ParseException pe){
 			pe.printStackTrace();
 		}

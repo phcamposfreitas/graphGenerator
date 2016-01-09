@@ -23,6 +23,10 @@ public class Sessao implements Serializable {
 	private Date dataFim;
 	
 	private Long duracao;
+	private Long bytesEnviados;
+	private Long bytesRecebidos;
+	private Long pacotesEnviados;
+	private Long pacotesRecebidos;
 	
 	public Sessao(UnidadeSessaoInicio usInicio, UnidadeSessaoFim usFim) {
 		this.idSessao = usInicio.getIdSessao();
@@ -30,6 +34,10 @@ public class Sessao implements Serializable {
 		this.dataInicio = usInicio.getData();
 		this.dataFim = usFim.getData();
 		this.duracao = usFim.getDuracao();
+		this.bytesEnviados = usFim.getBytesEnviados();
+		this.bytesRecebidos = usFim.getBytesRecebidos();
+		this.pacotesEnviados = usFim.getPacotesEnviados();
+		this.pacotesRecebidos = usFim.getPacotesRecebidos();
 	}
 	
 	
