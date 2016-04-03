@@ -1,4 +1,4 @@
-package com.generator.camel.model;
+package com.generator.coletor.model;
 
 import java.io.Serializable;
 import java.text.ParseException;

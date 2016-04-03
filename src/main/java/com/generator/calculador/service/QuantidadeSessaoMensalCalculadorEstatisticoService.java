@@ -7,11 +7,11 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import com.generator.calculador.DuracaoSessaoCalculadorEstatistico;
+import com.generator.calculador.QuantidadeSessaoCalculadorEstatistico;
 import com.generator.core.model.SessaoEntity;
 
 @Service
-public class DuracaoSessaoMensalCalculadorEstatisticoService extends DuracaoSessaoCalculadorEstatistico {
+public class QuantidadeSessaoMensalCalculadorEstatisticoService extends QuantidadeSessaoCalculadorEstatistico {
 
 	@Override
 	protected List<String> obterCategoriasAgrupamento() {
@@ -39,5 +39,4 @@ public class DuracaoSessaoMensalCalculadorEstatisticoService extends DuracaoSess
 		boolean equals = chave.substring(chave.indexOf("?") + 1).equals(intervalo);
 		return equals;
 	}
-
 }

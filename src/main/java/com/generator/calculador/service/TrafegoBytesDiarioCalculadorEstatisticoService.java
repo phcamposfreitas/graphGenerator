@@ -6,11 +6,11 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import com.generator.calculador.DuracaoSessaoCalculadorEstatistico;
+import com.generator.calculador.TrafegoCalculadorEstatistico;
 import com.generator.core.model.SessaoEntity;
 
 @Service
-public class DuracaoSessaoDiarioCalculadorEstatisticoService extends DuracaoSessaoCalculadorEstatistico {
+public class TrafegoBytesDiarioCalculadorEstatisticoService extends TrafegoCalculadorEstatistico{
 
 	@Override
 	protected List<String> obterCategoriasAgrupamento() {

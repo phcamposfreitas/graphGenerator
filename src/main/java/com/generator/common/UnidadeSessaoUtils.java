@@ -4,9 +4,9 @@ import java.text.ParseException;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.generator.camel.model.UnidadeSessao;
-import com.generator.camel.model.UnidadeSessaoFim;
-import com.generator.camel.model.UnidadeSessaoInicio;
+import com.generator.coletor.model.UnidadeSessao;
+import com.generator.coletor.model.UnidadeSessaoFim;
+import com.generator.coletor.model.UnidadeSessaoInicio;
 
 public final class UnidadeSessaoUtils {
 

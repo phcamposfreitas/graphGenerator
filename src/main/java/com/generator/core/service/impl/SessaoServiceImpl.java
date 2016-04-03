@@ -26,7 +26,10 @@ public class SessaoServiceImpl implements SessaoService {
 
 	@Override
 	public List<SessaoEntity> buscarTodos() {
-		return repository.findAll();
+		List<SessaoEntity> resultado = repository.findAll();
+		//TODO: Modificando quantidade de dados para tranalhar no front end
+//		return resultado.subList(0, resultado.size()/2);
+		return resultado;
 	}
 
 }

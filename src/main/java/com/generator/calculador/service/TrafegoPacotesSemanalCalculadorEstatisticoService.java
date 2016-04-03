@@ -7,15 +7,18 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import com.generator.calculador.DuracaoSessaoCalculadorEstatistico;
+import com.generator.calculador.TrafegoPacotesCalculadorEstatistico;
 import com.generator.core.model.SessaoEntity;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
-public class DuracaoSessaoMensalCalculadorEstatisticoService extends DuracaoSessaoCalculadorEstatistico {
+@Slf4j
+public class TrafegoPacotesSemanalCalculadorEstatisticoService extends TrafegoPacotesCalculadorEstatistico {
 
 	@Override
 	protected List<String> obterCategoriasAgrupamento() {
-		String categoriasConcatenadas = "Jan;Fev;Mar;Abr;Mai;Jun;Jul;Ago;Set;Out;Nov;Dez";
+		String categoriasConcatenadas = "Seg;Ter;Qua;Quin;Sex;Sab;Dom";
 		return Arrays.asList(categoriasConcatenadas.split(";"));
 	}
 
@@ -25,19 +28,18 @@ public class DuracaoSessaoMensalCalculadorEstatisticoService extends DuracaoSess
 		
 		if(dataInicio == null) return StringUtils.EMPTY;
 		
-		String intervalo = dataInicio.substring(0, 7);
+		String intervalo = dataInicio.substring(0, 10);
+		
 		LocalDateTime dia = sessao.getDataInicioAsLocalDate();
 		
-		int indexCategoria = dia.getMonthValue() - 1;
+		int indexCategoria = dia.getDayOfWeek().getValue() - 1;
 		List<String> categoria = obterCategoriasAgrupamento();
 		
 		return intervalo.concat("?".concat(categoria.get(indexCategoria)));
 	}
-	
+
 	@Override
 	protected boolean isSameIntervalo(String chave, String intervalo) {
-		boolean equals = chave.substring(chave.indexOf("?") + 1).equals(intervalo);
-		return equals;
+		return chave.substring(chave.indexOf("?") + 1).equals(intervalo);
 	}
-
 }

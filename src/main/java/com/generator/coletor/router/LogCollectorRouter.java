@@ -1,11 +1,11 @@
-package com.generator.camel.router;
+package com.generator.coletor.router;
 
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.generator.camel.model.UnidadeSessao;
-import com.generator.camel.processor.TransformLogToUnidadeSessao;
+import com.generator.coletor.model.UnidadeSessao;
+import com.generator.coletor.processor.TransformLogToUnidadeSessao;
 
 @Component
 public class LogCollectorRouter extends SpringRouteBuilder {

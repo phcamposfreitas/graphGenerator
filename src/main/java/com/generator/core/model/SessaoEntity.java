@@ -40,6 +40,10 @@ public class SessaoEntity implements Serializable {
 	private Double pacotesEnviados;
 	private Double pacotesRecebidos;
 	
+	public SessaoEntity(String dataInicio){
+		this.dataInicio = dataInicio;
+	}
+	
 	public LocalDateTime getDataInicioAsLocalDate() {
 		// TODO: Mapear entidade com date/Calendar/LocalDate, etc
 		LocalDateTime ld = null;
